@@ -15,7 +15,7 @@
     "release": "git push --tag && git push -u origin master",
     "format": "prettier --write",
     "prepare": "husky install",
-    "https-preview": "serve hsw-images",
+    "https-preview": "serve hsw-image",
     "pwa:test": "npm run build && npm run https-preview"
   },
   "lint-staged": {
