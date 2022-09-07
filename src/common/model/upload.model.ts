@@ -1,61 +1,68 @@
 export enum UploadStatusEnum {
-  waitUpload = 'waitUpload',
-  uploading = 'uploading',
+  // eslint-disable-next-line no-unused-vars
   uploaded = 'uploaded',
+  // eslint-disable-next-line no-unused-vars
   allUploaded = 'allUploaded',
+  // eslint-disable-next-line no-unused-vars
   uploadFail = 'uploadFail'
 }
 
-export interface ToUploadImageModel {
-
-  uuid: string,
-
-  uploadStatus: {
-    progress: number;
-    uploading: boolean;
-  },
-
-  imgData: {
-    base64Content: string;
-    base64Url: string;
-  },
-
-  fileInfo: {
-    size: number;
-    lastModified: number;
-  },
-
-  filename: {
-    name: string;
-    hash: string;
-    suffix: string;
-    now: string;
-    initName: string;
-    newName: string;
-    isHashRename: boolean;
-    isRename: boolean;
-  },
-
-  externalLink: {
-    github: string;
-    cdn: string;
-    markdown_gh: string;
-    markdown_cdn: string;
-  },
-
-  uploadedImg?: UploadedImageModel
+export interface UploadedImageModel {
+  type: string
+  uuid: string
+  sha: string
+  dir: string
+  path: string
+  name: string
+  size: any
+  deleting: boolean
+  is_transform_md: boolean
+  checked: boolean
+  github_url: string
+  jsdelivr_cdn_url: string
+  staticaly_cdn_url: string
+  cloudflare_cdn_url: string
 }
 
-export interface UploadedImageModel {
-  uuid: string,
-  dir: string,
-  name: string,
-  path: string,
-  sha: string,
-  github_url: string,
-  cdn_url: string,
-  md_gh_url: string,
-  md_cdn_url: string,
-  deleting: boolean,
-  is_transform_md: boolean
+export interface ToUploadImageModel {
+  uuid: string
+
+  uploadStatus: {
+    progress: number
+    uploading: boolean
+  }
+
+  imgData: {
+    base64Content: string
+    base64Url: string
+  }
+
+  fileInfo: {
+    compressedSize?: number | undefined
+    originSize?: number | undefined
+    size: number | undefined
+    lastModified: number | undefined
+  }
+
+  filename: {
+    name: string
+    hash: string
+    suffix: string
+    prefixName: string
+    now: string
+    initName: string
+    newName: string
+    isHashRename: boolean
+    isRename: boolean
+    isPrefix: boolean
+  }
+
+  externalLink: {
+    github: string
+    jsdelivr: string
+    staticaly: string
+    cloudflare: string
+  }
+
+  uploadedImg?: UploadedImageModel
 }
